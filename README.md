@@ -1,6 +1,4 @@
-# sass-demo
-> TODO
+# sass-notes
+> sass 学习笔记
 
-## 学习笔记
-
-https://yemuguliunian.github.io/sass-demo/
+https://yemuguliunian.github.io/sass-notes/
