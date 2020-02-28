@@ -1,11 +1,11 @@
 module.exports = {
-    title: 'Sass-demo',
+    title: 'Sass-notes',
     description: 'sass 学习',
-    base: '/sass-demo/',
+    base: '/sass-notes/',
     port: '3000',
     dest: './dist',
     themeConfig: {
-        repo: 'yemuguliunian/sass-demo',
+        repo: 'yemuguliunian/sass-notes',
         sidebarDepth: 2,
         nav: [
             { text: '快速入门', link: '/guide/variables'},
