@@ -1,7 +1,7 @@
 {
-  "name": "sass-demo",
+  "name": "sass-notes",
   "version": "1.0.0",
-  "description": "> TODO",
+  "description": "sass 学习笔记",
   "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev docs",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yemuguliunian/sass-demo.git"
+    "url": "git+https://github.com/yemuguliunian/sass-notes.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yemuguliunian/sass-demo/issues"
+    "url": "https://github.com/yemuguliunian/sass-notes/issues"
   },
-  "homepage": "https://github.com/yemuguliunian/sass-demo#readme",
+  "homepage": "https://github.com/yemuguliunian/sass-notes#readme",
   "devDependencies": {
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
