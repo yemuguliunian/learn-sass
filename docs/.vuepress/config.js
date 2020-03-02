@@ -12,11 +12,22 @@ module.exports = {
         sidebarDepth: 2,
         nav: [
             { text: '快速入门', link: '/guide/'},
+            { 
+                text: '扩展', 
+                items: [
+                    { text: 'sass与less对比', link: '/more/less' },
+                ]
+            },
         ],
         sidebar: {
             '/guide': [
                 '/guide/'
+            ],
+            '/more': [
+                '/more/less'
             ]
-        }
+        },
+        smoothScroll: true, // 启用页面滚动效果
     },
+    plugins: ['@vuepress/back-to-top']
 }
