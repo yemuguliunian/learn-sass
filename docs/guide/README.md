@@ -252,3 +252,51 @@ nav {
     border-right: 0px;
 }
 ```
+
+## 导入SASS文件
+
+### 使用SASS部分文件
+
+那些专门为@import命令而编写的sass文件，并不需要生成对应的独立css文件，这样的sass文件称为局部文件。对此，sass有一个特殊的约定来命名这些文件。
+
+此约定即，sass局部文件的文件名以下划线开头。这样，sass就不会在编译时单独编译这个文件输出css，而只把这个文件用作导入。当你`@import`一个局部文件时，还可以不写文件的全名，即省略文件名开头的下划线。举例来说，你想导入`themes/_night-sky.scss`这个局部文件里的变量，你只需在样式表中写`@import "themes/night-sky"`;。
+
+### 默认变量值
+
+一般情况下，你反复声明一个变量，只有最后一处声明有效且它会覆盖前边的值。举例说明：
+
+```scss
+$link-color: blue;
+$link-color: red;
+a {
+    color: $link-color;
+}
+```
+
+在上边的例子中，超链接的`color`会被设置为`red`。
+
+假如你写了一个可被他人通过@import导入的sass库文件，你可能希望导入者可以定制修改sass库文件中的某些值。使用sass的!default标签可以实现这个目的。它很像css属性中!important标签的对立面，不同的是!default用于变量，含义是：如果这个变量被声明赋值了，那就用它声明的值，否则就用这个默认值。
+
+<style lang="scss">
+$fancybox-width: 400px !default;
+.fancybox {
+    height: 100px;
+    width: $fancybox-width;
+    background-color: #bfbfbf;
+}
+</style>
+
+```scss
+$fancybox-width: 400px !default;
+.fancybox {
+    width: $fancybox-width;
+}
+```
+
+<div class="demo">
+    <div class="fancybox"></div>
+</div>
+
+### 嵌套导入
+
+跟原生的css不同，sass允许@import命令写在css规则内。这种导入方式下，生成对应的css文件时，局部文件会被直接插入到css规则内导入它的地方。举例说明，有一个名为_blue-theme.scss的局部文件
