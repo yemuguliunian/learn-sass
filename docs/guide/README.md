@@ -8,10 +8,12 @@ title: 快速入门
 
 <style lang="scss">
 $font-size: 20px;
-.title {
-    $color: red;
-    color: $color;
-    font-size: $font-size;
+.demo {
+    .title {
+        $color: red;
+        color: $color;
+        font-size: $font-size;
+    }
 }
 $highlight-color: #F90;
 $highlight-border: 1px solid $highlight-color;
@@ -300,3 +302,95 @@ $fancybox-width: 400px !default;
 ### 嵌套导入
 
 跟原生的css不同，sass允许@import命令写在css规则内。这种导入方式下，生成对应的css文件时，局部文件会被直接插入到css规则内导入它的地方。举例说明，有一个名为_blue-theme.scss的局部文件
+
+## 混合器
+
+定义一个非常简单的混合器，目的是添加跨浏览器的圆角边框。
+
+```scss
+@mixin rounded-corners {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+```
+
+然后就可以在你的样式表中通过@include来使用这个混合器，放在你希望的任何地方。@include调用会把混合器中的所有样式提取出来放在@include被调用的地方。如果像下边这样写：
+
+```scss
+notice {
+    background-color: green;
+    border: 2px solid #00aa00;
+    @include rounded-corners;
+}
+
+//sass最终生成：
+```
+
+```css
+.notice {
+    background-color: green;
+    border: 2px solid #00aa00;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+```
+
+### 混合器传参
+
+混合器并不一定总得生成相同的样式。可以通过在`@include`混合器时给混合器传参，来定制混合器生成的精确样式。当`@include`混合器时，参数其实就是可以赋值给`css`属性值的变量。如果你写过`JavaScript`，这种方式跟`JavaScript`的`function`很像：
+
+```scss
+@mixin link-colors($normal, $hover, $visited) {
+    color: $normal;
+    &:hover { color: $hover; }
+    &:visited { color: $visited; }
+}
+```
+当混合器被`@include`时，你可以把它当作一个`css`函数来传参。如果你像下边这样写：
+
+```scss
+a {
+    @include link-colors(blue, red, green);
+}
+
+//Sass最终生成的是：
+
+a { color: blue; }
+a:hover { color: red; }
+a:visited { color: green; }
+```
+
+当你`@include`混合器时，有时候可能会很难区分每个参数是什么意思，参数之间是一个什么样的顺序。为了解决这个问题，`sass`允许通过语法`$name: value`的形式指定每个参数的值。这种形式的传参，参数顺序就不必再在乎了，只需要保证没有漏掉参数即可：
+
+```scss
+a {
+    @include link-colors(
+        $normal: blue,
+        $visited: green,
+        $hover: red
+    );
+}
+```
+
+### 默认参数值
+
+参数默认值使用`$name: default-value`的声明形式，默认值可以是任何有效的`css`属性值，甚至是其他参数的引用，如下代码：
+
+```scss
+@mixin link-colors(
+    $normal,
+    $hover: $normal,
+    $visited: $normal
+  )
+{
+  color: $normal;
+  &:hover { color: $hover; }
+  &:visited { color: $visited; }
+}
+```
+
+如果像下边这样调用：`@include link-colors(red)` `$hover`和`$visited`也会被自动赋值为`red`。
+
+## 选择器继承
