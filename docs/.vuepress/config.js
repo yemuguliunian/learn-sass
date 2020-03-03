@@ -18,6 +18,13 @@ module.exports = {
                     { text: 'sass与less对比', link: '/more/less' },
                 ]
             },
+            {
+                text: '在线编译',
+                items: [
+                    { text: 'sass 在线编译', link: 'https://www.sassmeister.com/' },
+                    { text: 'less 在线编译', link: 'https://lesstester.com/' }
+                ]
+            }
         ],
         sidebar: {
             '/guide': [
