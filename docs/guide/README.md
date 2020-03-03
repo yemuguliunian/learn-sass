@@ -394,3 +394,68 @@ a {
 如果像下边这样调用：`@include link-colors(red)` `$hover`和`$visited`也会被自动赋值为`red`。
 
 ## 选择器继承
+
+选择器继承是说一个选择器可以继承为另一个选择器定义的所有样式。这个通过`@extend`语法实现，如下代码:
+
+```scss
+//通过选择器继承继承样式
+.error {
+    border: 1px solid red;
+    background-color: #fdd;
+}
+.seriousError {
+    @extend .error;
+    border-width: 3px;
+}
+```
+
+在上边的代码中，`.seriousError`将会继承样式表中任何位置处为`.error`定义的所有样式。
+
+`.seriousError`不仅会继承`.error`自身的所有样式，任何跟`.error`有关的组合选择器样式也会被`.seriousError`以组合选择器的形式继承，如下代码:
+
+```scss
+// .seriousError从.error继承样式
+.error a{  // 应用到.seriousError a
+    color: red;
+    font-weight: 100;
+}
+h1.error { // 应用到hl.seriousError
+    font-size: 1.2rem;
+}
+```
+
+<style lang="scss">
+#example-extend-1 {
+    .error {
+        border: 1px solid red;
+        background-color: #fdd;
+    }
+    .seriousError {
+        @extend .error;
+        border-width: 3px;
+    } 
+    .error a{  // 应用到.seriousError a
+        color: red;
+        font-weight: 100;
+    }
+    h1.error { // 应用到hl.seriousError
+        font-size: 1.2rem;
+    }
+}
+</style>
+
+```html
+<h1>
+    <div class="seriousError">
+        <a>seriousError-a</a>
+    </div>
+</h1>  
+```
+
+<div class="demo" id="example-extend-1">
+    <h1>
+        <div class="seriousError">
+            <a>seriousError-a</a>
+        </div>
+    </h1>   
+</div>
