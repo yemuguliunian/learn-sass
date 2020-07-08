@@ -1,5 +1,5 @@
 {
-  "name": "sass-notes",
+  "name": "learn-sass",
   "version": "1.0.0",
   "description": "sass 学习笔记",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yemuguliunian/sass-notes.git"
+    "url": "git+https://github.com/yemuguliunian/learn-sass.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yemuguliunian/sass-notes/issues"
+    "url": "https://github.com/yemuguliunian/learn-sass/issues"
   },
-  "homepage": "https://github.com/yemuguliunian/sass-notes#readme",
+  "homepage": "https://github.com/yemuguliunian/learn-sass#readme",
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.3.1",
     "node-sass": "^4.13.1",

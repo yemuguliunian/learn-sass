@@ -5,7 +5,7 @@ tagline: 世界上最成熟、最稳定、最强大的专业级CSS扩展语言�
 actionText: 快速入门 →
 actionLink: /guide/
 ---
-# Sass-notes
+# learn-sass
 
 > :notes: sass 学习笔记
 
